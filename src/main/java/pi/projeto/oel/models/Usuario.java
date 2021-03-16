@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,23 +16,21 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
 	private String nome;
 
-	@NotBlank
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataNasc;
 	
-	@NotBlank
+	
 	private String cidade;
 
-	@NotBlank
+	
 	private String email;
 
-	@NotBlank
+	
 	private String senha;
 
-	@NotBlank
+	
 	public long getId() {
 		return id;
 	}

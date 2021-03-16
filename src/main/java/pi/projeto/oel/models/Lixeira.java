@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,20 +16,19 @@ public class Lixeira {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotBlank
+	
 	private String tipo;
 	
-	@NotBlank
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate data;
 	
-	@NotBlank
+	
 	private String latitude;
 	
-	@NotBlank
+	
 	private String logitude;
 	
-	@NotBlank
+	
 	private String complemento;
 
 	public long getId() {
