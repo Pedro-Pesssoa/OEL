@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Cadastro Usuário</title>
+</head>
+<body>
+	<div th:replace="~{menu :: menu}"></div>
+	<div class="container">
+		<h1>Cadastrar Usuário</h1>
+
+		<form action="">
+
+			<div>
+				<label>Nome:</label> <input type="text" name="nome">
+			</div>
+			<div>
+				<label>Data de Nascimento:</label> <input type="text"
+					name="dataNasc">
+			</div>
+			<div>
+				<label>Cidade:</label> <input type="text" name="cidade">
+			</div>
+			<div>
+				<label>Email:</label> <input type="text" name="email">
+			</div>
+			<div>
+				<label>Senha:</label> <input type="text" name="senha">
+			</div>
+
+
+		</form>
+	</div>
+
+
+
+
+</body>
+</html>
