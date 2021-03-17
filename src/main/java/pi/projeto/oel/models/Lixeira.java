@@ -15,20 +15,11 @@ public class Lixeira {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
 	private String tipo;
-	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate data;
-	
-	
 	private String latitude;
-	
-	
 	private String logitude;
-	
-	
 	private String complemento;
 
 	public long getId() {

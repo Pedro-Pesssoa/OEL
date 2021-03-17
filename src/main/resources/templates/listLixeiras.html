@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<meta charset="UTF-8">
+<title>Lista das lixeiras</title>
+</head>
+
+<body>
+<div th:replace="~{menu :: menu}"></div>
+	<div class="container">
+		<h1>Lista das lixeiras</h1>
+		
+		<table class="highlight">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Tipo</th>
+					<th>Data</th>
+					<th>Longitude</th>
+					<th>Latitude</th>
+					<th>Complemento</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="l : ${lixeiras}">
+					<td th:text="${l.id}">id</td>
+					<td th:text="${l.tipo}">tipo</td>
+					<td th:text="${l.data}">data</td>
+					<td th:text="${l.logitude}">longitude</td>
+					<td th:text="${l.latitude}">latitude</td>
+					<td th:text="${l.complemento}">complemento</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+</body>
+</html>
