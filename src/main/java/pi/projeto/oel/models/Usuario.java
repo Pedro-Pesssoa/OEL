@@ -1,13 +1,9 @@
 package pi.projeto.oel.models;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Usuario {
@@ -16,10 +12,11 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	
 	private String nome;
 
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dataNasc;
+	
+	private String dataNasc;
 	
 	
 	private String cidade;
@@ -47,11 +44,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public LocalDate getIdade() {
+	public String getIdade() {
 		return dataNasc;
 	}
 
-	public void setIdade(LocalDate idade) {
+	public void setIdade(String idade) {
 		this.dataNasc = idade;
 	}
 
