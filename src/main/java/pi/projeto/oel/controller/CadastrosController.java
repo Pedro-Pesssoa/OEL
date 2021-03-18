@@ -24,17 +24,19 @@ public class CadastrosController {
 	@Autowired
 	private UsuarioRepository ur;
 	
-	@RequestMapping("/usuario")
+	@GetMapping("/usuario")
 	public String cadastrarUsuario (Usuario usuario) {
 		
+		System.out.println(usuario);
 		ur.save(usuario);
 		
 		return "cadastroUsuario";
 		
 	}
-	@RequestMapping("/lixeira")
+	@GetMapping("/lixeira")
 	public String cadastrarLixeira (Lixeira lixeira) {
 		
+		System.out.println(lixeira);
 		lr.save(lixeira);
 		
 		return "cadastroLixeira";
