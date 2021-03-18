@@ -9,7 +9,12 @@ public class OelApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OelApplication.class, args);
+		
+		
 		System.out.println(new BCryptPasswordEncoder().encode("123")); 
+		
+
+		
 	}
 
 }
