@@ -62,7 +62,7 @@ public class CadastrosController {
 			return md;
 		}
 
-		md.setViewName("/detalhes");
+		md.setViewName("]]/detalhes");
 		Lixeira lixeira = opt.get();
 		md.addObject("lixeira", lixeira);
 
