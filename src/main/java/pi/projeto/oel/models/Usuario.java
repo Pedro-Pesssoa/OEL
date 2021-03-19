@@ -21,8 +21,7 @@ public class Usuario implements UserDetails{
 
 	private String nome;
 
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dataNasc;
+	private String dataNasc;
 	
 	
 	private String cidade;
@@ -50,11 +49,11 @@ public class Usuario implements UserDetails{
 		this.nome = nome;
 	}
 
-	public LocalDate getIdade() {
+	public String getIdade() {
 		return dataNasc;
 	}
 
-	public void setIdade(LocalDate idade) {
+	public void setIdade(String idade) {
 		this.dataNasc = idade;
 	}
 
