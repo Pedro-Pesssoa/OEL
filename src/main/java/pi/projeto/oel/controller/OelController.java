@@ -10,20 +10,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import pi.projeto.oel.models.Denuncia;
 import pi.projeto.oel.models.Lixeira;
 import pi.projeto.oel.models.Usuario;
+import pi.projeto.oel.repositories.DenunciaRepository;
 import pi.projeto.oel.repositories.LixeiraRepository;
 import pi.projeto.oel.repositories.UsuarioRepository;
 
 @Controller
 @RequestMapping("/oel")
-public class CadastrosController {
+public class OelController {
 
 	@Autowired
 	private LixeiraRepository lr;
 
 	@Autowired
 	private UsuarioRepository ur;
+	
+	@Autowired
+	private DenunciaRepository dr;
 
 	@GetMapping("/usuario")
 	public String cadastrarUsuario(Usuario usuario) {
@@ -42,6 +47,16 @@ public class CadastrosController {
 		lr.save(lixeira);
 
 		return "cadastroLixeira";
+	}
+	
+	@GetMapping("/denuncia")
+	public String denunciaLixeira(Denuncia denuncia) {
+		
+		System.out.println(denuncia);
+		dr.save(denuncia);
+		
+		return "denunciia";
+		
 	}
 
 	@GetMapping

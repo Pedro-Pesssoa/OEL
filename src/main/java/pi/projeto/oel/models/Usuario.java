@@ -71,11 +71,6 @@ public class Usuario implements UserDetails{
 		this.senha = senha;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", idade=" + dataNasc + ", cidade=" + cidade + ", email=" + email
-				+ ", senha=" + senha + "]";
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
