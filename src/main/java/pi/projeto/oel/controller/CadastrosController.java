@@ -32,7 +32,6 @@ public class CadastrosController {
 		ur.save(usuario);
 
 		return "cadastroUsuario";
-
 	}
 
 	@GetMapping("/lixeira")
