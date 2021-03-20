@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,10 +17,20 @@ public class Usuario implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
+	@NotBlank
 	private String nome;
+	
+	@NotBlank
 	private String dataNasc;
+	
+	@NotBlank
 	private String cidade;
+	
+	@NotBlank
 	private String email;
+	
+	@NotBlank
 	private String senha;
 
 	

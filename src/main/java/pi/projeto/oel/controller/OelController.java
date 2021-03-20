@@ -3,8 +3,11 @@ package pi.projeto.oel.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +34,11 @@ public class OelController {
 	private DenunciaRepository dr;
 
 	@GetMapping("/usuario")
-	public String cadastrarUsuario(Usuario usuario) {
+	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "cadastroUsuario";
+		}
 
 		System.out.println(usuario);
 		ur.save(usuario);
@@ -40,7 +47,11 @@ public class OelController {
 	}
 
 	@GetMapping("/lixeira")
-	public String cadastrarLixeira(Lixeira lixeira) {
+	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
+		
+		if (result.hasErrors()) {
+			return "cadastroLixeira";
+		}
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
@@ -55,7 +66,6 @@ public class OelController {
 		dr.save(denuncia);
 		
 		return "denuncia";
-		
 	}
 
 	@GetMapping

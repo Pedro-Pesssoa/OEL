@@ -31,6 +31,7 @@
 							<div class="mb-3">
 								<input type="text" name="nome" class="form-control"
 									placeholder="Ex: Maria Laura da Silva">
+									<p th:erros="*{nome}"></p>
 							</div>
 						</div>
 						<div class="row">
@@ -39,6 +40,7 @@
 							<div class="mb-3">
 								<input type="text" name="dataNasc" class="form-control"
 									placeholder="Ex: 24/07/2000">
+									<p th:erros="*{dataNasc}"></p>
 							</div>
 						</div>
 						<div class="row">
@@ -46,6 +48,7 @@
 							<div class="mb-3">
 								<input type="text" name="cidade" class="form-control"
 									placeholder="Ex: Lajes-RN">
+									<p th:erros="*{cidade}"></p>
 							</div>
 						</div>
 						<div class="row">
@@ -53,6 +56,7 @@
 							<div class="mb-3">
 								<input type="text" name="email" class="form-control"
 									placeholder="Ex: laura@gamail.com">
+									<p th:erros="*{email}"></p>
 							</div>
 						</div>
 
@@ -61,10 +65,11 @@
 							<div class="mb-3">
 								<input type="password" name="senha" class="form-control"
 									placeholder="Ex: laurinha@123">
+									<p th:erros="*{senha}"></p>
 							</div>
 						</div>
 
-						<div class="row justify-content-end">
+						<div class="row justify-content-end my-3">
 							<div class="col-auto">
 								<div class="d-grid gap-2 d-md-block">
 									<button class="btn btn-primary" type="submit">Cadastrar</button>
