@@ -22,7 +22,6 @@
 		</div>
 	</div>
 
-
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-md-9">
@@ -37,9 +36,6 @@
 					</div>
 				</div>
 
-
-
-
 				<div class="row row-cols-1 row-cols-md-4 g-4  my-2">
 					<div class="col" th:each="l : ${lixeiras}">
 						<div class="card h-100">
@@ -53,7 +49,7 @@
 								<li class="list-group-item" th:text="${l.complemento}">complemento</li>
 							</ul>
 							<div class="card-footer text-center">
-								<a class="card-link  text-decoration-none "
+								<a class="card-link  text-decoration-none"
 									th:href="@{/oel/{id}(id=${l.id})}">Detalhar</a>
 							</div>
 						</div>
@@ -62,7 +58,5 @@
 			</div>
 		</div>
 	</div>
-
-
 </body>
 </html>
