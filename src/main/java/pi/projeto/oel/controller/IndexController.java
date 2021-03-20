@@ -9,7 +9,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public String inicio() {
 		System.out.println("Chamou o método index");
-		return "home";
+		return "redirect:/oel";
 	}
 
 }

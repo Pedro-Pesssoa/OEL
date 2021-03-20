@@ -1,6 +1,5 @@
 package pi.projeto.oel.models;
 
-import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -8,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,18 +16,10 @@ public class Usuario implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 	private String nome;
-
 	private String dataNasc;
-	
-	
 	private String cidade;
-
-	
 	private String email;
-
-	
 	private String senha;
 
 	
