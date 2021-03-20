@@ -20,52 +20,49 @@
 				<h1 class="display-6">Lista das lixeiras</h1>
 			</div>
 		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col-md-9">
+
+				<div class="row justify-content-end">
+					<div class="col-auto">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Pesquisar" aria-label="Pesquisar">
+					</div>
+					<div class="col-auto">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+					</div>
+				</div>
 
 
 
 
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-8">
-					
-					<div class="row justify-content-end">
-						<div class="col-auto">
-							<input class="form-control mr-sm-2" type="search"
-								placeholder="Pesquisar" aria-label="Pesquisar">
-						</div>
-						<div class="col-auto">
-							<button class="btn btn-outline-success my-2 my-sm-0"
-								type="submit">Pesquisar</button>
+				<div class="row row-cols-1 row-cols-md-4 g-4  my-2">
+					<div class="col" th:each="l : ${lixeiras}">
+						<div class="card h-100">
+							<div class="card-header">
+								<h5 class="card-title text-center" th:text="${l.tipo}">Tipo</h5>
+							</div>
+							<ul class="list-group list-group-flush">
+								<!-- <li class="list-group-item" th:text="${l.id}" >id</li>  -->
+								<li class="list-group-item" th:text="${l.latitude}">latitude</li>
+								<li class="list-group-item" th:text="${l.logitude}">longitude</li>
+								<li class="list-group-item" th:text="${l.complemento}">complemento</li>
+							</ul>
+							<div class="card-footer text-center">
+								<a class="card-link  text-decoration-none "
+									th:href="@{/oel/{id}(id=${l.id})}">Detalhar</a>
+							</div>
 						</div>
 					</div>
-
-
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Tipo</th>
-								<th>Data</th>
-								<th>Longitude</th>
-								<th>Latitude</th>
-								<th>Complemento</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="l : ${lixeiras}">
-								<td th:text="${l.id}">id</td>
-								<td><a class="text-decoration-none" th:href="@{/oel/{id}(id=${l.id})}"> <span th:text="${l.tipo}"> Tipo </span></a></td>
-								<td th:text="${l.data}">data</td>
-								<td th:text="${l.logitude}">longitude</td>
-								<td th:text="${l.latitude}">latitude</td>
-								<td th:text="${l.complemento}">complemento</td>
-							</tr>
-						</tbody>
-					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>
