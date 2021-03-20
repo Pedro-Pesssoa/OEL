@@ -54,7 +54,7 @@ public class OelController {
 		System.out.println(denuncia);
 		dr.save(denuncia);
 		
-		return "denunciia";
+		return "denuncia";
 		
 	}
 
