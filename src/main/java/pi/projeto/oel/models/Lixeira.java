@@ -18,9 +18,13 @@ public class Lixeira {
 	private String tipo;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate data;
+	private String bairro;
+	private String rua;
 	private String latitude;
 	private String logitude;
 	private String complemento;
+	
+	
 
 	public long getId() {
 		return id;
@@ -70,13 +74,21 @@ public class Lixeira {
 		this.data = data;
 	}
 
-	@Override
-	public String toString() {
-		return "Lixeira [id=" + id + ", tipo=" + tipo + ", data=" + data + ", latitude=" + latitude + ", logitude="
-				+ logitude + ", complemento=" + complemento + "]";
+	
+	public String getBairro() {
+		return bairro;
 	}
 
-	
-	
-	
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
 }
