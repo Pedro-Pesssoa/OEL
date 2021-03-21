@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pi.projeto.oel.models.Denuncia;
 import pi.projeto.oel.models.Lixeira;
@@ -34,9 +35,10 @@ public class OelController {
 	private DenunciaRepository dr;
 
 	@GetMapping("/usuario")
-	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
+	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 		
 		if (result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "verifique se todos os campos, estão respondidos");
 			return "cadastroUsuario";
 		}
 
