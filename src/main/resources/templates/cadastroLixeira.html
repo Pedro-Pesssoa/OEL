@@ -39,6 +39,7 @@
 									<option>Hospitalar</option>
 									<option>Outros</option>
 								</select>
+								<p th:erros="*{tipo}"></p>
 							</div>
 						</div>
 
@@ -57,7 +58,7 @@
 									<option>Antonio de Melo</option>
 									<option>Boa Esperança</option>
 								</select>
-
+								<p th:erros="*{bairro}"></p>
 							</div>
 						</div>
 						<div class="row">
@@ -65,6 +66,7 @@
 							<div class="mb-3">
 								<input type="text" name="rua" class="form-control"
 									placeholder="Ex: Rua Firmamento">
+									<p th:erros="*{rua}"></p>
 							</div>
 						</div>
 						<div class="row">
@@ -72,14 +74,15 @@
 							<div class="mb-3">
 								<input type="text" name="Complemento" class="form-control"
 									placeholder="Ex: Proximo a praça central">
+									<p th:erros="*{complemento}"></p>
 							</div>
 						</div>
 
 						<div class="row justify-content-end">
 							<div class="col-auto">
 								<div class="d-grid gap-2 d-md-block">
-									<button class="btn btn-primary" type="submit">Cadastrar</button>
-									<button class="btn btn-outline-danger" type="reset">Limpar</button>
+									<button class="btn btn-primary my-2" type="submit">Cadastrar</button>
+									<button class="btn btn-outline-danger my-2" type="reset">Limpar</button>
 								</div>
 							</div>
 						</div>
