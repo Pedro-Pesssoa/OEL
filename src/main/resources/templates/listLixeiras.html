@@ -25,40 +25,62 @@
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-md-9">
-
-				<div class="row justify-content-between">
-					<div class="col-4">
-						<a href="/oel/lixeira" class="btn btn-primary" role="button"
-							data-bs-toggle="button">Adicionar Lixeira</a>
-
+				<div class="container-float">
+					<div class="row justify-content-between">
+						<div class="col-auto">
+							<a href="/oel/lixeira" class="btn btn-primary mb-2" role="button"
+								data-bs-toggle="button">Adicionar Lixeira</a>
+						</div>
+						<div class="col-auto">
+							<a href="/" class="btn btn-primary mb-2" role="button"
+								data-bs-toggle="button">Voltar</a>
+						</div>
 					</div>
-					<form action="/oel/pesquisa" method="get" >
-						<div class="col-md-3 offset-md-3">
-							<input name="nomepesquisa" class="form-control mr-sm-2" type="search"
-								placeholder="Pesquisar" aria-label="Pesquisar">
-						</div>
-						<div class="col-auto">
-							<button class="btn btn-outline-primary my-2 my-sm-0"
-								 type="submit">Pesquisar</button>
-						</div>
-					</form>
-					
-					
-					<form action="/oel/pesquisa2" method="get" >
-						<div class="col-md-3 offset-md-3">
-							<input name="nomepesquisa" class="form-control mr-sm-2" type="search"
-								placeholder="Pesquisar" aria-label="Pesquisar">
-						</div>
-						<div class="col-auto">
-							<button class="btn btn-outline-primary my-2 my-sm-0"
-								 type="submit">Pesquisar</button>
-						</div>
-						
-					</form>
-					
 				</div>
 
-				<div class="row row-cols-1 row-cols-md-4 g-4  my-2">
+				<div class="container-float">
+					<div class="row justify-content-end my-3">
+						<div class="col">
+							<form action="/oel/pesquisa" method="get">
+								<div class="col-sm-auto">
+									<input name="nomepesquisa" class=" form-control mb-2"
+										type="search" placeholder="Pesquisar por Bairro"
+										aria-label="Pesquisar">
+								</div>
+								<div class="col-sm-3">
+									<button class="btn btn-outline-primary mb-2" type="submit">Pesquisar</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="col">
+							<form action="/oel/pesquisa2" method="get">
+								<div class="col-sm-auto">
+									<input name="nomepesquisa" class="form-control mb-2"
+										type="search" placeholder="Pesquisar por Rua"
+										aria-label="Pesquisar">
+								</div>
+								<div class="col-sm-3">
+									<button class="btn btn-outline-primary " type="submit">Pesquisar</button>
+								</div>
+							</form>
+						</div>
+						<div class="col">
+							<form action="/oel/pesquisa3" method="get">
+								<div class="col-sm-auto">
+									<input name="nomepesquisa" class="form-control mb-2"
+										type="search" placeholder="Pesquisar por Rua"
+										aria-label="Pesquisar">
+								</div>
+								<div class="col-sm-3">
+									<button class="btn btn-outline-primary " type="submit">Pesquisar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="row row-cols-1 row-cols-md-4 g-4 ">
 					<div class="col" th:each="l : ${lixeiras}">
 						<div class="card h-100">
 							<div class="card-header">
