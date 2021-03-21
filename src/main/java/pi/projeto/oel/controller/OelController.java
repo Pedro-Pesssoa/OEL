@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -59,8 +60,24 @@ public class OelController {
 		lr.save(lixeira);
 
 		return "cadastroLixeira";
+	}   
+	  
+	@GetMapping("/pesquisa")
+	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
+		ModelAndView mv = new ModelAndView("listLixeiras");
+		mv.addObject("lixeiras", lr.findByBairro(nomepesquisa));
+		mv.addObject("lixeira", new Lixeira());
+		return mv;
 	}
 	
+	@GetMapping("/pesquisa2") 
+	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
+		ModelAndView mv = new ModelAndView("listLixeiras");
+		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
+		mv.addObject("lixeira", new Lixeira());
+		return mv;
+	}
+	 
 	@GetMapping("/denuncia")
 	public String denunciaLixeira(Denuncia denuncia) {
 		
