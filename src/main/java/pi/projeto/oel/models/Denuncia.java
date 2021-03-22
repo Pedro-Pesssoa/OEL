@@ -49,6 +49,11 @@ public class Denuncia {
 	public void setLixeira(Lixeira lixeira) {
 		this.lixeira = lixeira;
 	}
+
+	@Override
+	public String toString() {
+		return "Denuncia [id=" + id + ", motivo=" + motivo + ", argumento=" + argumento + ", lixeira=" + lixeira + "]";
+	}
 	
 	
 }
