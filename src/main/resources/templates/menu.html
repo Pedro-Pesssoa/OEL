@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 <title>Menu</title>
@@ -28,9 +29,9 @@
 			
 			<div class="d-grid gap-2 d-md-block">
 				<a href="/oel/usuario" class="btn btn-outline-primary me-2" role="button"
-					data-bs-toggle="button">Cadastre-se</a>
+					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Cadastre-se</a>
 				<a href="/login" class="btn btn-primary me-2" role="button"
-					data-bs-toggle="button">Entrar</a> 
+					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Entrar</a> 
 			</div>
 		</div>
 	</nav>

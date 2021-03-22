@@ -89,4 +89,6 @@ public class Lixeira {
 		this.rua = rua;
 	}
 
+
+	
 }
