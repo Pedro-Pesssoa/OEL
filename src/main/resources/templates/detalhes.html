@@ -43,61 +43,14 @@
 								<strong>Complemento:</strong> <span
 									th:text="${lixeira.complemento}">Complemento</span>
 							</p>
-								<h1>MAPA</h1>
 						</div>
 					</div>
 					<div class="row justify-content-end">
-					<div class="col-auto">
-						<a href="/oel/denuncia" class="btn btn-primary"
-						role="button" data-bs-toggle="button">Solicitar exclusão</a>
+						<div class="col-auto">
+							<a href="/oel/denuncia" class="btn btn-outline-danger" role="button"
+								data-bs-toggle="button">Solicitar exclusão</a>
+						</div>
 					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center my-5">
-				<h1 class="display-6">Denunciar Lixeira</h1>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-7">
-
-					<form action="/{idlixeira}" method="post">
-
-						<div class="row">
-							<label class="col-md-auto col-form-label">Qual o motivo
-								da denuncia?:</label>
-							<div class="mb-3">
-								<select class="form-control" name="motivo">
-									<option>motivo1</option>
-									<option>motivo2</option>
-									<option>motivo3</option>
-									<option>Outros</option>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-md-auto col-form-label">Descreva:</label>
-							<div class="mb-3">
-								<input type="text" name="argumento" class="form-control"
-									placeholder="Ex: a lixeira está posicionada no outro lado da rua, em frente a casa x">
-							</div>
-						</div>
-
-						<div class="row justify-content-end">
-							<div class="col-auto">
-								<div class="d-grid gap-2 d-md-block">
-									<button class="btn btn-primary" type="submit">Denuncia</button>
-									<button class="btn btn-outline-danger" type="reset">Limpar</button>
-								</div>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>

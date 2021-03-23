@@ -28,11 +28,11 @@
 				<div class="container-float">
 					<div class="row justify-content-between">
 						<div class="col-auto">
-							<a href="/oel/lixeira" class="btn btn-primary mb-2" role="button"
+							<a href="/oel/lixeira" class="btn btn-success mb-2" role="button"
 								data-bs-toggle="button">Adicionar Lixeira</a>
 						</div>
 						<div class="col-auto">
-							<a href="/" class="btn btn-primary mb-2" role="button"
+							<a href="/" class="btn btn-outline-secondary mb-2" role="button"
 								data-bs-toggle="button">Voltar</a>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 							<form action="/oel/pesquisa3" method="get">
 								<div class="col-sm-auto">
 									<input name="nomepesquisa" class="form-control mb-2"
-										type="search" placeholder="Pesquisar por Rua"
+										type="search" placeholder="Pesquisar por Tipo"
 										aria-label="Pesquisar">
 								</div>
 								<div class="col-sm-3">
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 
-				<div class="row row-cols-1 row-cols-md-4 g-4 ">
+				<div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
 					<div class="col" th:each="l : ${lixeiras}">
 						<div class="card h-100">
 							<div class="card-header">

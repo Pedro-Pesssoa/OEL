@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Denuncia {
@@ -12,7 +13,10 @@ public class Denuncia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
+	
+	@NotBlank
 	public String motivo;
+	@NotBlank
 	public String argumento;
 	
 	@ManyToOne

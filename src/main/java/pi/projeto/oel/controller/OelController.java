@@ -35,6 +35,8 @@ public class OelController {
 	
 	@Autowired
 	private DenunciaRepository dr;
+	
+	
 
 	@GetMapping("/usuario")
 	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
@@ -61,7 +63,21 @@ public class OelController {
 		lr.save(lixeira);
 
 		return "cadastroLixeira";
-	}   
+	}
+	
+	@GetMapping("/denuncia")
+	public String denunciaLixeira(@Valid Denuncia denuncia, BindingResult result, RedirectAttributes attributes ) {
+		
+		if (result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "verifique se todos os campos, estão respondidos");
+			return "denuncia";
+		}
+
+		System.out.println(denuncia);
+		dr.save(denuncia);
+
+		return "denuncia";
+	}
 	  
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
@@ -75,6 +91,14 @@ public class OelController {
 	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("listLixeiras");
 		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
+		mv.addObject("lixeira", new Lixeira());
+		return mv;
+	}
+	
+	@GetMapping("/pesquisa3") 
+	public ModelAndView filtroTipo(@RequestParam("nomepesquisa") String nomepesquisa) {
+		ModelAndView mv = new ModelAndView("listLixeiras");
+		mv.addObject("lixeiras", lr.findByTipo(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
