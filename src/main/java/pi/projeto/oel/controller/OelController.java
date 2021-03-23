@@ -39,10 +39,9 @@ public class OelController {
 	
 
 	@GetMapping("/usuario")
-	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
+	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "verifique se todos os campos, estão respondidos");
 			return "cadastroUsuario";
 		}
 
