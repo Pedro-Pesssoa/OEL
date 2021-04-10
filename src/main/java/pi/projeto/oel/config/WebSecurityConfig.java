@@ -11,9 +11,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 
-		.antMatchers("/oel", "/oel/usuario").permitAll()
+		.antMatchers("/", "/oel", "/oel/usuario", "/imagens/**" ).permitAll()
 		.anyRequest().authenticated()
 		.and()
-		.formLogin().permitAll();
+		.formLogin()
+			.loginPage("/oel/login")
+			.permitAll();
 	}
 }
