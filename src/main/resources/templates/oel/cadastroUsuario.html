@@ -12,76 +12,81 @@
 <body>
 	<div th:replace="~{menu :: menu}"></div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center my-5">
-				<h2 class="display-6">Cadastrar Usuário</h2>
+	<div class="p-5" style="background-image: url('/imagens/cinza.png'); background-size: 100% 100%;">
+
+
+		<div class="container text-light">
+			<div class="row">
+				<div class="col-12 text-center my-2">
+					<h2 class="display-6">Cadastrar Usuário</h2>
+				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-7">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-6">
 
-					<form action="/oel/usuario">
+						<form action="/oel/usuario">
 
-						<div class="row">
-							<label class="col-md-auto col-form-label">Nome:</label>
-							<div class="mb-3">
-								<input type="text" name="nome" class="form-control"
-									placeholder="Ex: Maria Laura da Silva">
-								<p th:erros="*{nome}"></p>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-sm-3 col-form-label">Data de
-								Nascimento:</label>
-							<div class="mb-3">
-								<input type="text" name="dataNasc" class="form-control"
-									placeholder="Ex: 24/07/2000">
-								<p th:erros="*{dataNasc}"></p>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-sm-2 col-form-label">Cidade:</label>
-							<div class="mb-3">
-								<input type="text" name="cidade" class="form-control"
-									placeholder="Ex: Lajes-RN">
-								<p th:erros="*{cidade}"></p>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-sm-2 col-form-label">Email:</label>
-							<div class="mb-3">
-								<input type="text" name="email" class="form-control"
-									placeholder="Ex: laura@gamail.com">
-								<p th:erros="*{email}"></p>
-							</div>
-						</div>
-
-						<div class="row">
-							<label class="col-sm-2 col-form-label">Senha:</label>
-							<div class="mb-3">
-								<input type="password" name="senha" class="form-control"
-									placeholder="Ex: laurinha@123">
-								<p th:erros="*{senha}"></p>
-							</div>
-						</div>
-
-						<div class="row justify-content-end my-3">
-							<div class="col-auto">
-								<div class="d-grid gap-2 d-md-block">
-									<button class="btn btn-primary" type="submit">Cadastrar</button>
-									<button class="btn btn-outline-danger" type="reset">Limpar</button>
+							<div class="row">
+								<label class="col-md-auto col-form-label">Nome:</label>
+								<div class="mb-1">
+									<input type="text" name="nome" class="form-control"
+										placeholder="Ex: Maria Laura da Silva">
+									<p th:erros="*{nome}"></p>
 								</div>
 							</div>
-						</div>
+							<div class="row">
+								<label class="col-sm-3 col-form-label">Data de
+									Nascimento:</label>
+								<div class="mb-1">
+									<input type="text" name="dataNasc" class="form-control"
+										placeholder="Ex: 24/07/2000">
+									<p th:erros="*{dataNasc}"></p>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-sm-2 col-form-label">Cidade:</label>
+								<div class="mb-1">
+									<input type="text" name="cidade" class="form-control"
+										placeholder="Ex: Lajes-RN">
+									<p th:erros="*{cidade}"></p>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-sm-2 col-form-label">Email:</label>
+								<div class="mb-1">
+									<input type="text" name="email" class="form-control"
+										placeholder="Ex: laura@gamail.com">
+									<p th:erros="*{email}"></p>
+								</div>
+							</div>
 
-					</form>
+							<div class="row">
+								<label class="col-sm-2 col-form-label">Senha:</label>
+								<div class="mb-1">
+									<input type="password" name="senha" class="form-control"
+										placeholder="Ex: laurinha@123">
+									<p th:erros="*{senha}"></p>
+								</div>
+							</div>
 
+							<div class="row justify-content-end my-1">
+								<div class="col-auto">
+									<div class="d-grid gap-2 d-md-block">
+										<button class="btn btn-outline-light" type="reset">Limpar</button>
+										<button class="btn btn-light" type="submit">Cadastrar</button>
+									</div>
+								</div>
+							</div>
+
+						</form>
+
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div th:replace="~{rodape :: rodape}"></div>
 </body>
 </html>

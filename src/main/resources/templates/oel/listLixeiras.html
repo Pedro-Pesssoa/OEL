@@ -12,95 +12,101 @@
 </head>
 
 <body>
+
 	<div th:replace="~{menu :: menu}"></div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center my-5">
-				<h1 class="display-6">Onde está a lixeira?</h1>
+	
+	
+	<div class="container-fluid text-light p-4"
+		style="background-image: url('/imagens/verde.png'); background-size: 100% 100%;">
+			<div class="row">
+				<div class="col-12 text-center my-2">
+					<h2 class="display-6">Onde está a lixeira?</h2>
+				</div>
 			</div>
-		</div>
 	</div>
-
-	<div class="container ">
-		<div class="row justify-content-md-center">
-			<div class="col-md-9">
-				<div class="container-float">
-					<div class="row justify-content-between">
-						<div class="col-auto">
-							<a href="/oel/lixeira" class="btn btn-success mb-2" role="button"
-								data-bs-toggle="button">Adicionar Lixeira</a>
-						</div>
-						<div class="col-auto">
-							<a href="/" class="btn btn-outline-secondary mb-2" role="button"
-								data-bs-toggle="button">Voltar</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="container-float">
-					<div class="row justify-content-end my-3">
-						<div class="col">
-							<form action="/oel/pesquisa" method="get">
-								<div class="col-sm-auto">
-									<input name="nomepesquisa" class=" form-control mb-2"
-										type="search" placeholder="Pesquisar por Bairro"
-										aria-label="Pesquisar">
-								</div>
-								<div class="col-sm-3">
-									<button class="btn btn-outline-primary mb-2" type="submit">Pesquisar</button>
-								</div>
-							</form>
-						</div>
-
-						<div class="col">
-							<form action="/oel/pesquisa2" method="get">
-								<div class="col-sm-auto">
-									<input name="nomepesquisa" class="form-control mb-2"
-										type="search" placeholder="Pesquisar por Rua"
-										aria-label="Pesquisar">
-								</div>
-								<div class="col-sm-3">
-									<button class="btn btn-outline-primary " type="submit">Pesquisar</button>
-								</div>
-							</form>
-						</div>
-						<div class="col">
-							<form action="/oel/pesquisa3" method="get">
-								<div class="col-sm-auto">
-									<input name="nomepesquisa" class="form-control mb-2"
-										type="search" placeholder="Pesquisar por Tipo"
-										aria-label="Pesquisar">
-								</div>
-								<div class="col-sm-3">
-									<button class="btn btn-outline-primary " type="submit">Pesquisar</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-					<div class="col" th:each="l : ${lixeiras}">
-						<div class="card h-100">
-							<div class="card-header">
-								<h5 class="card-title text-center" th:text="${l.tipo}">Tipo</h5>
+		
+	<div class="p-4 bg-dark">
+		<div class="container ">
+			<div class="row justify-content-md-center">
+				<div class="col-md-9">
+					<div class="container-float">
+						<div class="row justify-content-between">
+							<div class="col-auto">
+								<a href="/oel/lixeira" class="btn btn-success mb-2"
+									role="button" data-bs-toggle="button">Adicionar Lixeira</a>
 							</div>
-							<ul class="list-group list-group-flush">
-								<!-- <li class="list-group-item" th:text="${l.id}" >id</li>  -->
-								<li class="list-group-item" th:text="${l.bairro}">Bairro</li>
-								<li class="list-group-item" th:text="${l.rua}">rua</li>
-								<li class="list-group-item" th:text="${l.complemento}">complemento</li>
-							</ul>
-							<div class="card-footer text-center">
-								<a class="card-link  text-decoration-none"
-									th:href="@{/oel/{id}(id=${l.id})}">Detalhar</a>
+							<div class="col-auto">
+								<a href="/" class="btn btn-outline-secondary mb-2" role="button"
+									data-bs-toggle="button">Voltar</a>
 							</div>
 						</div>
 					</div>
+
+					<div class="container-float">
+						<div class="row justify-content-end my-3">
+							<div class="col">
+								<form action="/oel/pesquisa" method="get">
+									<div class="col-sm-auto">
+										<input name="nomepesquisa" class=" form-control mb-2"
+											type="search" placeholder="Pesquisar por Bairro"
+											aria-label="Pesquisar">
+									</div>
+									<div class="col-sm-3">
+										<button class="btn btn-outline-success mb-2" type="submit">Pesquisar</button>
+									</div>
+								</form>
+							</div>
+
+							<div class="col">
+								<form action="/oel/pesquisa2" method="get">
+									<div class="col-sm-auto">
+										<input name="nomepesquisa" class="form-control mb-2"
+											type="search" placeholder="Pesquisar por Rua"
+											aria-label="Pesquisar">
+									</div>
+									<div class="col-sm-3">
+										<button class="btn btn-outline-success " type="submit">Pesquisar</button>
+									</div>
+								</form>
+							</div>
+							<div class="col">
+								<form action="/oel/pesquisa3" method="get">
+									<div class="col-sm-auto">
+										<input name="nomepesquisa" class="form-control mb-2"
+											type="search" placeholder="Pesquisar por Tipo"
+											aria-label="Pesquisar">
+									</div>
+									<div class="col-sm-3">
+										<button class="btn btn-outline-success " type="submit">Pesquisar</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+						<div class="col" th:each="l : ${lixeiras}">
+							<div class="card h-100 text-success">
+								<div class="card-header">
+									<h5 class="card-title text-center" th:text="${l.tipo}">Tipo</h5>
+								</div>
+								<ul class="list-group list-group-flush">
+									<!-- <li class="list-group-item" th:text="${l.id}" >id</li>  -->
+									<li class="list-group-item" th:text="${l.bairro}">Bairro</li>
+									<li class="list-group-item" th:text="${l.rua}">rua</li>
+									<li class="list-group-item" th:text="${l.complemento}">complemento</li>
+								</ul>
+								<div class="card-footer text-center">
+									<a class="card-link text-success  text-decoration-none "
+										th:href="@{/oel/{id}(id=${l.id})}">Detalhar</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div th:replace="~{rodape :: rodape}"></div>
 </body>
 </html>

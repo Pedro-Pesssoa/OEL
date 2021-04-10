@@ -13,84 +13,92 @@
 <body>
 	<div th:replace="~{menu :: menu}"></div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center my-5">
-				<h1 class="display-6">Cadastrar Lixeira</h1>
+	<div class="p-5"
+		style="background-image: url('/imagens/azul.png'); background-size: 100% 100%;">
+	
+		<div class="container text-light">
+			<div class="row">
+				<div class="col-12 text-center my-2">
+					<h1 class="display-6">Cadastrar Lixeira</h1>
+				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-7">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-6">
 
-					<form action="/oel/lixeira">
+						<form action="/oel/lixeira">
 
-						<div class="row">
-							<label class="col-md-auto col-form-label">Tipo:</label>
-							<div class="mb-3">
-								<select class="form-control" name="tipo">
-									<option>Papel e papelão</option>
-									<option>Vidro</option>
-									<option>Plástico</option>
-									<option>Metal</option>
-									<option>Orgânico</option>
-									<option>Materiais não reciclados</option>
-									<option>Hospitalar</option>
-									<option>Outros</option>
-								</select>
-								<p th:erros="*{tipo}"></p>
-							</div>
-						</div>
-
-						<div class="row">
-							<label class="col-md-auto col-form-label">Bairro:</label>
-							<div class="mb-3">
-								<select class="form-control" name="bairro">
-									<option>Coahb</option>
-									<option>Alto da maternidade</option>
-									<option>Nova Esperança</option>
-									<option>Centro</option>
-									<option>Alvorada</option>
-									<option>Ceac</option>
-									<option>São Judas</option>
-									<option>Boa Esperança</option>
-									<option>Antonio de Melo</option>
-									<option>Boa Esperança</option>
-								</select>
-								<p th:erros="*{bairro}"></p>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-md-auto col-form-label">Rua:</label>
-							<div class="mb-3">
-								<input type="text" name="rua" class="form-control"
-									placeholder="Ex: Rua Firmamento">
-									<p th:erros="*{rua}"></p>
-							</div>
-						</div>
-						<div class="row">
-							<label class="col-md-auto col-form-label">Complemento:</label>
-							<div class="mb-3">
-								<input type="text" name="Complemento" class="form-control"
-									placeholder="Ex: Proximo a praça central">
-									<p th:erros="*{complemento}"></p>
-							</div>
-						</div>
-
-						<div class="row justify-content-end">
-							<div class="col-auto">
-								<div class="d-grid gap-2 d-md-block">
-									<button class="btn btn-primary my-2" type="submit">Cadastrar</button>
-									<button class="btn btn-outline-danger my-2" type="reset">Limpar</button>
+							<div class="row">
+								<label class="col-md-auto col-form-label">Tipo:</label>
+								<div class="mb-1">
+									<select class="form-control" name="tipo">
+										<option>Escolha uma opção...</option>
+										<option>Papel e papelão</option>
+										<option>Vidro</option>
+										<option>Plástico</option>
+										<option>Metal</option>
+										<option>Orgânico</option>
+										<option>Materiais não reciclados</option>
+										<option>Hospitalar</option>
+										<option>Outros</option>
+									</select>
+									<p th:erros="*{tipo}"></p>
 								</div>
 							</div>
-						</div>
 
-					</form>
+							<div class="row">
+								<label class="col-md-auto col-form-label">Bairro:</label>
+								<div class="mb-1">
+									<select class="form-control" name="bairro">
+										<option>Escolha uma opção...</option>
+										<option>Coahb</option>
+										<option>Alto da maternidade</option>
+										<option>Nova Esperança</option>
+										<option>Centro</option>
+										<option>Alvorada</option>
+										<option>Ceac</option>
+										<option>São Judas</option>
+										<option>Boa Esperança</option>
+										<option>Antonio de Melo</option>
+										<option>Boa Esperança</option>
+									</select>
+									<p th:erros="*{bairro}"></p>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-md-auto col-form-label">Rua:</label>
+								<div class="mb-1">
+									<input type="text" name="rua" class="form-control"
+										placeholder="Ex: Rua Firmamento">
+									<p th:erros="*{rua}"></p>
+								</div>
+							</div>
+							<div class="row">
+								<label class="col-md-auto col-form-label">Complemento:</label>
+								<div class="mb-1">
+									<input type="text" name="Complemento" class="form-control"
+										placeholder="Ex: Proximo a praça central">
+									<p th:erros="*{complemento}"></p>
+								</div>
+							</div>
+
+							<div class="row justify-content-end my-1">
+								<div class="col-auto">
+									<div class="d-grid gap-2 d-md-block">
+										<button class="btn btn-outline-secondary my-2" type="reset">Limpar</button>
+										<button class="btn btn-secondary my-2" type="submit">Cadastrar</button>
+
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div th:replace="~{rodape :: rodape}"></div>
 </body>
 </html>
