@@ -38,12 +38,12 @@ public class OelController {
 	
 	@GetMapping("/lixeira")
 	public String formLixeira() {
-		return "cadastroLixeira";
+		return "/oel/cadastroLixeira";
 	}
 	
 	@GetMapping("/usuario")
 	public String formUsuario() {
-		return "cadastroUsuario";
+		return "/oel/cadastroUsuario";
 	}
 	
 	@PostMapping("/usuario")
@@ -103,7 +103,7 @@ public class OelController {
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lixeiras);
 		return mv;
 	}
