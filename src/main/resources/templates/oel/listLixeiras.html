@@ -96,10 +96,14 @@
 									<li class="list-group-item" th:text="${l.rua}">rua</li>
 									<li class="list-group-item" th:text="${l.complemento}">complemento</li>
 								</ul>
+								
 								<div class="card-footer text-center">
 									<a class="card-link text-success  text-decoration-none "
-										th:href="@{/oel/{id}(id=${l.id})}">Detalhar</a>
+										th:href="@{/oel/{id}(id=${l.id})}">Detalhar </a>
+										<button class="btn btn-outline-secondary my-2" type="reset"> <span class="glyphicon glyphicon-trash"> icon </span></button>
+										
 								</div>
+								
 							</div>
 						</div>
 					</div>
