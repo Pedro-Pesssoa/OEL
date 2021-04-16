@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,22 +36,34 @@ public class OelController {
 	@Autowired
 	private DenunciaRepository dr;
 	
+	@GetMapping("/lixeira")
+	public String formLixeira() {
+		return "cadastroLixeira";
+	}
 	
-
 	@GetMapping("/usuario")
+	public String formUsuario() {
+		return "cadastroUsuario";
+	}
+	
+	@PostMapping("/usuario")
 	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
+		System.out.println("daleee "+ usuario);
 		
 		if (result.hasErrors()) {
-			return "/oel/cadastroUsuario";
+
+			System.out.println("erro");
+			return "cadastroUsuario";
 		}
 
 		System.out.println(usuario);
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));  
 		ur.save(usuario);
 
 		return "/oel/cadastroUsuario";
 	}
 
-	@GetMapping("/lixeira")
+	@PostMapping("/lixeira")
 	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
 		
 		if (result.hasErrors()) {

@@ -10,8 +10,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-
-		.antMatchers("/oel", "/oel/usuario").permitAll()
+		.antMatchers("/oel").permitAll()
+		.antMatchers("/oel/usuario").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().permitAll();
