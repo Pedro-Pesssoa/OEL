@@ -103,7 +103,7 @@ public class OelController {
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
-		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
+		ModelAndView mv = new ModelAndView("listLixeiras");
 		mv.addObject("lixeiras", lixeiras);
 		return mv;
 	}
