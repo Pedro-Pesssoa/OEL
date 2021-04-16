@@ -60,20 +60,20 @@ public class OelController {
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));  
 		ur.save(usuario);
 
-		return "/oel/cadastroUsuario";
+		return "cadastroUsuario";
 	}
 
 	@PostMapping("/lixeira")
 	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "/oel/cadastroLixeira";
+			return "cadastroLixeira";
 		}
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
 
-		return "/oel/cadastroLixeira";
+		return "cadastroLixeira";
 	}
 	  
 	@GetMapping("/pesquisa")
