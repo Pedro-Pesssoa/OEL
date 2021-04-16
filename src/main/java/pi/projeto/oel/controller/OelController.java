@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pi.projeto.oel.models.Denuncia;
 import pi.projeto.oel.models.Lixeira;
@@ -63,20 +62,6 @@ public class OelController {
 
 		return "cadastroLixeira";
 	}
-	
-	@GetMapping("/denuncia")
-	public String denunciaLixeira(@Valid Denuncia denuncia, BindingResult result, RedirectAttributes attributes ) {
-		
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "verifique se todos os campos, estão respondidos");
-			return "denuncia";
-		}
-
-		System.out.println(denuncia);
-		dr.save(denuncia);
-
-		return "denuncia";
-	}
 	  
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
@@ -102,26 +87,6 @@ public class OelController {
 		return mv;
 	}
 	 
-	@PostMapping("/{idlixeira}")  
-	public String denunciaLixeira(@PathVariable Long idlixeira, Denuncia denuncia) {
-		
-		
-		System.out.println("id lixeira"+ idlixeira);
-		System.out.println(denuncia);
-		
-		Optional<Lixeira> opt = lr.findById(idlixeira);
-		
-		if (opt.isEmpty()) {
-			return "redirect:/oel";
-		}
-		
-		Lixeira lixeira = opt.get();
-		denuncia.setLixeira(lixeira);
-		dr.save(denuncia);
-		
-		return "redirect:/{idlixeira}";
-	}
-
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
@@ -146,4 +111,50 @@ public class OelController {
 
 		return md;
 	}
+	
+	@GetMapping("/{idLixeira}/fazerDenuncia")
+	public ModelAndView fazerDenuncia(@PathVariable Long idLixeira, Denuncia denuncia) {
+		ModelAndView md = new ModelAndView();
+		
+		Optional<Lixeira> optLixeira = lr.findById(idLixeira);
+
+		if (optLixeira.isEmpty()) {
+			md.setViewName("redirect:/oel");
+			return md;
+		}
+
+		Lixeira lixeira = optLixeira.get();
+
+		md.setViewName("/denuncia");
+		md.addObject("lixeira", lixeira);
+
+		return md;
+
+	}
+	
+	@PostMapping("/{idLixeira}/fazerDenuncia")
+	public ModelAndView realizarDenuncia(@PathVariable Long idLixeira, @Valid Denuncia denuncia) {
+		ModelAndView md = new ModelAndView();
+		Optional<Lixeira> optLixeira = lr.findById(idLixeira);
+
+		if (optLixeira.isEmpty()) {
+			md.setViewName("redirect:/oel");
+			return md;
+		}
+
+		Lixeira lixeira = optLixeira.get();
+		
+		md.setViewName("redirect:/oel/{idLixeira}");
+		md.addObject("lixeira", lixeira);
+		md.addObject("denuncia", denuncia);
+		
+	    denuncia.setLixeira(lixeira);
+		
+		dr.save(denuncia);
+
+		return md;
+
+	}
+	
+	
 }

@@ -24,7 +24,9 @@
 			<div class="row justify-content-md-center">
 				<div class="col-md-7">
 
-					<form action="/oel/denuncia" method="get">
+					<form th:action="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
+						method="post" th:object="${denuncia}">
+					
 
 						<div class="row">
 							<label class="col-md-auto col-form-label">Qual o motivo
@@ -32,10 +34,10 @@
 							<div class="mb-3">
 								<select class="form-control" name="motivo">
 									<option>Escolha um motivo...</option>
-									<option>Lixeira não existe mais!</option>
-									<option>Lixeira não corresponde ao tipo que está na
+									<option >Lixeira não existe mais!</option>
+									<option >Lixeira não corresponde ao tipo que está na
 										descrição</option>
-									<option>Outros</option>
+									<option  >Outros</option>
 								</select>
 							</div>
 						</div>
@@ -46,6 +48,7 @@
 									placeholder="Ex: a lixeira está posicionada no outro lado da rua, em frente a casa x">
 							</div>
 						</div>
+						
 
 						<div class="row justify-content-end">
 							<div class="col-auto">
