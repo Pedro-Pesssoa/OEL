@@ -42,26 +42,26 @@ public class OelController {
 	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "cadastroUsuario";
+			return "/oel/cadastroUsuario";
 		}
 
 		System.out.println(usuario);
 		ur.save(usuario);
 
-		return "cadastroUsuario";
+		return "/oel/cadastroUsuario";
 	}
 
 	@GetMapping("/lixeira")
 	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "cadastroLixeira";
+			return "/oel/cadastroLixeira";
 		}
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
 
-		return "cadastroLixeira";
+		return "/oel/cadastroLixeira";
 	}
 	
 	@GetMapping("/denuncia")
@@ -80,7 +80,7 @@ public class OelController {
 	  
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByBairro(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
@@ -88,7 +88,7 @@ public class OelController {
 	
 	@GetMapping("/pesquisa2") 
 	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
@@ -96,13 +96,13 @@ public class OelController {
 	
 	@GetMapping("/pesquisa3") 
 	public ModelAndView filtroTipo(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByTipo(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
 	 
-	@PostMapping("/{idlixeira}")  
+	@PostMapping("/{idlixeira}/denuncia")  
 	public String denunciaLixeira(@PathVariable Long idlixeira, Denuncia denuncia) {
 		
 		
@@ -125,7 +125,7 @@ public class OelController {
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lixeiras);
 		return mv;
 	}
@@ -140,7 +140,7 @@ public class OelController {
 			return md;
 		}
 
-		md.setViewName("/detalhes");
+		md.setViewName("/oel/detalhes");
 		Lixeira lixeira = opt.get();
 		md.addObject("lixeira", lixeira);
 
