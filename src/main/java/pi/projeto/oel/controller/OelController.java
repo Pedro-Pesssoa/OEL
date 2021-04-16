@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pi.projeto.oel.models.Denuncia;
 import pi.projeto.oel.models.Lixeira;
@@ -36,51 +36,49 @@ public class OelController {
 	@Autowired
 	private DenunciaRepository dr;
 	
+	@GetMapping("/lixeira")
+	public String formLixeira() {
+		return "cadastroLixeira";
+	}
 	
-
 	@GetMapping("/usuario")
+	public String formUsuario() {
+		return "cadastroUsuario";
+	}
+	
+	@PostMapping("/usuario")
 	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
+		System.out.println("daleee "+ usuario);
 		
 		if (result.hasErrors()) {
+
+			System.out.println("erro");
 			return "cadastroUsuario";
 		}
 
 		System.out.println(usuario);
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));  
 		ur.save(usuario);
 
-		return "cadastroUsuario";
+		return "/oel/cadastroUsuario";
 	}
 
-	@GetMapping("/lixeira")
+	@PostMapping("/lixeira")
 	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
 		
 		if (result.hasErrors()) {
-			return "cadastroLixeira";
+			return "/oel/cadastroLixeira";
 		}
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
 
-		return "cadastroLixeira";
-	}
-	
-	@GetMapping("/denuncia")
-	public String denunciaLixeira(@Valid Denuncia denuncia, BindingResult result, RedirectAttributes attributes ) {
-		
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "verifique se todos os campos, estão respondidos");
-			return "denuncia";
-		}
-
-		System.out.println(denuncia);
-		dr.save(denuncia);
-
-		return "denuncia";
+		return "/oel/cadastroLixeira";
 	}
 	  
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByBairro(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
@@ -88,7 +86,7 @@ public class OelController {
 	
 	@GetMapping("/pesquisa2") 
 	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
@@ -96,32 +94,12 @@ public class OelController {
 	
 	@GetMapping("/pesquisa3") 
 	public ModelAndView filtroTipo(@RequestParam("nomepesquisa") String nomepesquisa) {
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByTipo(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
 	 
-	@PostMapping("/{idlixeira}")  
-	public String denunciaLixeira(@PathVariable Long idlixeira, Denuncia denuncia) {
-		
-		
-		System.out.println("id lixeira"+ idlixeira);
-		System.out.println(denuncia);
-		
-		Optional<Lixeira> opt = lr.findById(idlixeira);
-		
-		if (opt.isEmpty()) {
-			return "redirect:/oel";
-		}
-		
-		Lixeira lixeira = opt.get();
-		denuncia.setLixeira(lixeira);
-		dr.save(denuncia);
-		
-		return "redirect:/{idlixeira}";
-	}
-
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
@@ -140,10 +118,56 @@ public class OelController {
 			return md;
 		}
 
-		md.setViewName("/detalhes");
+		md.setViewName("/oel/detalhes");
 		Lixeira lixeira = opt.get();
 		md.addObject("lixeira", lixeira);
 
 		return md;
 	}
+	
+	@GetMapping("/{idLixeira}/fazerDenuncia")
+	public ModelAndView fazerDenuncia(@PathVariable Long idLixeira, Denuncia denuncia) {
+		ModelAndView md = new ModelAndView();
+		
+		Optional<Lixeira> optLixeira = lr.findById(idLixeira);
+
+		if (optLixeira.isEmpty()) {
+			md.setViewName("redirect:/oel");
+			return md;
+		}
+
+		Lixeira lixeira = optLixeira.get();
+
+		md.setViewName("/denuncia");
+		md.addObject("lixeira", lixeira);
+
+		return md;
+
+	}
+	
+	@PostMapping("/{idLixeira}/fazerDenuncia")
+	public ModelAndView realizarDenuncia(@PathVariable Long idLixeira, @Valid Denuncia denuncia) {
+		ModelAndView md = new ModelAndView();
+		Optional<Lixeira> optLixeira = lr.findById(idLixeira);
+
+		if (optLixeira.isEmpty()) {
+			md.setViewName("redirect:/oel");
+			return md;
+		}
+
+		Lixeira lixeira = optLixeira.get();
+		
+		md.setViewName("redirect:/oel/{idLixeira}");
+		md.addObject("lixeira", lixeira);
+		md.addObject("denuncia", denuncia);
+		
+	    denuncia.setLixeira(lixeira);
+		
+		dr.save(denuncia);
+
+		return md;
+
+	}
+	
+	
 }

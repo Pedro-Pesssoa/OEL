@@ -47,13 +47,17 @@
 					</div>
 					<div class="row justify-content-end my-3">
 						<div class="col-auto">
-							<a href="/oel/denuncia" class="btn btn-outline-danger" role="button"
+							<a th:object="${lixeira}"
+								th:href="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
+								class="btn btn-outline-danger" role="button"
 								data-bs-toggle="button">Solicitar exclusão</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 	<div th:replace="~{rodape :: rodape}"></div>
 </body>

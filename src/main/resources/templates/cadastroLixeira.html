@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Cadastro da Lixeira</title>
+</head>
+<body>
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center my-5">
+				<h1 class="display-6">Cadastrar Lixeira</h1>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-md-7">
+
+					<form action="/oel/lixeira" method="post">
+
+						<div class="row">
+							<label class="col-md-auto col-form-label">Tipo:</label>
+							<div class="mb-3">
+								<select class="form-control" name="tipo">
+									<option>Papel e papelão</option>
+									<option>Vidro</option>
+									<option>Plástico</option>
+									<option>Metal</option>
+									<option>Orgânico</option>
+									<option>Materiais não reciclados</option>
+									<option>Hospitalar</option>
+									<option>Outros</option>
+								</select>
+								<p th:erros="*{tipo}"></p>
+							</div>
+						</div>
+
+						<div class="row">
+							<label class="col-md-auto col-form-label">Bairro:</label>
+							<div class="mb-3">
+								<select class="form-control" name="bairro">
+									<option>Coahb</option>
+									<option>Alto da maternidade</option>
+									<option>Nova Esperança</option>
+									<option>Centro</option>
+									<option>Alvorada</option>
+									<option>Ceac</option>
+									<option>São Judas</option>
+									<option>Boa Esperança</option>
+									<option>Antonio de Melo</option>
+									<option>Boa Esperança</option>
+								</select>
+								<p th:erros="*{bairro}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<label class="col-md-auto col-form-label">Rua:</label>
+							<div class="mb-3">
+								<input type="text" name="rua" class="form-control"
+									placeholder="Ex: Rua Firmamento">
+									<p th:erros="*{rua}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<label class="col-md-auto col-form-label">Complemento:</label>
+							<div class="mb-3">
+								<input type="text" name="Complemento" class="form-control"
+									placeholder="Ex: Proximo a praça central">
+									<p th:erros="*{complemento}"></p>
+							</div>
+						</div>
+
+						<div class="row justify-content-end">
+							<div class="col-auto">
+								<div class="d-grid gap-2 d-md-block">
+									<button class="btn btn-primary my-2" type="submit">Cadastrar</button>
+									<button class="btn btn-outline-danger my-2" type="reset">Limpar</button>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

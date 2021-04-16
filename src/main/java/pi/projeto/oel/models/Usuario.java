@@ -16,7 +16,7 @@ public class Usuario implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@NotBlank
 	private String nome;
@@ -34,11 +34,11 @@ public class Usuario implements UserDetails{
 	private String senha;
 
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,12 +50,12 @@ public class Usuario implements UserDetails{
 		this.nome = nome;
 	}
 
-	public String getIdade() {
+	public String getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setIdade(String idade) {
-		this.dataNasc = idade;
+	public void setDataNasc(String dataNasc) {
+		this.dataNasc = dataNasc;
 	}
 
 	public String getCidade() {
@@ -82,6 +82,11 @@ public class Usuario implements UserDetails{
 		this.senha = senha;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", dataNasc=" + dataNasc + ", cidade=" + cidade + ", email="
+				+ email + ", senha=" + senha + "]";
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
