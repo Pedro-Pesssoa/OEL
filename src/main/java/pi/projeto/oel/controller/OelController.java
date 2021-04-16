@@ -32,24 +32,27 @@ public class OelController {
 
 	@Autowired
 	private UsuarioRepository ur;
-	
+
 	@Autowired
 	private DenunciaRepository dr;
-	
+
 	@GetMapping("/lixeira")
 	public String formLixeira() {
-		return "cadastroLixeira";
+
+		return "/oel/cadastroLixeira";
+
 	}
-	
+
 	@GetMapping("/usuario")
 	public String formUsuario() {
-		return "cadastroUsuario";
+
+		return "/oel/cadastroUsuario";
 	}
-	
+
 	@PostMapping("/usuario")
 	public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result) {
-		System.out.println("daleee "+ usuario);
-		
+		System.out.println("daleee " + usuario);
+
 		if (result.hasErrors()) {
 
 			System.out.println("erro");
@@ -57,25 +60,25 @@ public class OelController {
 		}
 
 		System.out.println(usuario);
-		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));  
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		ur.save(usuario);
 
-		return "cadastroUsuario";
+		return "/oel/cadastroUsuario";
 	}
 
 	@PostMapping("/lixeira")
 	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
-		
+
 		if (result.hasErrors()) {
-			return "cadastroLixeira";
+			return "/oel/cadastroLixeira";
 		}
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
 
-		return "cadastroLixeira";
+		return "/oel/cadastroLixeira";
 	}
-	  
+
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
@@ -83,27 +86,27 @@ public class OelController {
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
-	
-	@GetMapping("/pesquisa2") 
+
+	@GetMapping("/pesquisa2")
 	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
-	
-	@GetMapping("/pesquisa3") 
+
+	@GetMapping("/pesquisa3")
 	public ModelAndView filtroTipo(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lr.findByTipo(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
-	 
+
 	@GetMapping
 	public ModelAndView listar() {
 		List<Lixeira> lixeiras = lr.findAll();
-		ModelAndView mv = new ModelAndView("listLixeiras");
+		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
 		mv.addObject("lixeiras", lixeiras);
 		return mv;
 	}
@@ -124,11 +127,11 @@ public class OelController {
 
 		return md;
 	}
-	
+
 	@GetMapping("/{idLixeira}/fazerDenuncia")
 	public ModelAndView fazerDenuncia(@PathVariable Long idLixeira, Denuncia denuncia) {
 		ModelAndView md = new ModelAndView();
-		
+
 		Optional<Lixeira> optLixeira = lr.findById(idLixeira);
 
 		if (optLixeira.isEmpty()) {
@@ -144,7 +147,7 @@ public class OelController {
 		return md;
 
 	}
-	
+
 	@PostMapping("/{idLixeira}/fazerDenuncia")
 	public ModelAndView realizarDenuncia(@PathVariable Long idLixeira, @Valid Denuncia denuncia) {
 		ModelAndView md = new ModelAndView();
@@ -156,18 +159,17 @@ public class OelController {
 		}
 
 		Lixeira lixeira = optLixeira.get();
-		
+
 		md.setViewName("redirect:/oel/{idLixeira}");
 		md.addObject("lixeira", lixeira);
 		md.addObject("denuncia", denuncia);
-		
-	    denuncia.setLixeira(lixeira);
-		
+
+		denuncia.setLixeira(lixeira);
+
 		dr.save(denuncia);
 
 		return md;
 
 	}
-	
-	
+
 }
