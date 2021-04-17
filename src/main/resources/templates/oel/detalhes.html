@@ -13,10 +13,12 @@
 
 <body>
 	<div th:replace="~{menu :: menu}"></div>
+	
+	<div class="p-5" style="background-image: url('/imagens/amarelo.png'); background-size: 100% 100%;">
 
-	<div class="container">
+	<div class="container" style="height: 475px;">
 		<div class="row">
-			<div class="col-12 text-center my-5">
+			<div class="col-12 text-center p-5  text-light">
 				<h1 class="display-6">Detalhes da lixeira</h1>
 			</div>
 		</div>
@@ -49,15 +51,14 @@
 						<div class="col-auto">
 							<a th:object="${lixeira}"
 								th:href="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
-								class="btn btn-outline-danger" role="button"
+								class="btn btn-light" role="button"
 								data-bs-toggle="button">Solicitar exclusão</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
+	</div>
 	</div>
 	<div th:replace="~{rodape :: rodape}"></div>
 </body>

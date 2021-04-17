@@ -8,14 +8,17 @@
 	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 	crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>Detalhes da lixeira</title>
+<title>Denuncia da lixeira</title>
 </head>
 
 <body>
 	<div th:replace="~{menu :: menu}"></div>
-	<div class="container">
+	
+	<div class="p-5" style="background-image: url('/imagens/vermelho.png'); background-size: 100% 100%;">
+	
+	<div class="container text-light" style="height: 475px;">
 		<div class="row">
-			<div class="col-12 text-center my-5">
+			<div class="col-12 text-center my-2 p-5">
 				<h4 class="display-6">Denunciar Lixeira</h4>
 			</div>
 		</div>
@@ -52,8 +55,8 @@
 						<div class="row justify-content-end">
 							<div class="col-auto">
 								<div class="d-grid gap-2 d-md-block mb-4">
-									<button class="btn btn-primary" type="submit">Denunciar</button>
-									<button class="btn btn-outline-danger" type="reset">Limpar</button>
+									<button class="btn btn-outline-light" type="reset">Limpar</button>
+									<button class="btn btn-light" type="submit">Denunciar</button>
 								</div>
 							</div>
 						</div>
@@ -62,5 +65,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
+	<div th:replace="~{rodape :: rodape}"></div>
 </body>
 </html>
