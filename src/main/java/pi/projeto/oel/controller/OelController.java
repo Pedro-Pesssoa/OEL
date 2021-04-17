@@ -141,7 +141,7 @@ public class OelController {
 
 		Lixeira lixeira = optLixeira.get();
 
-		md.setViewName("/denuncia");
+		md.setViewName("/oel/denuncia");
 		md.addObject("lixeira", lixeira);
 
 		return md;
