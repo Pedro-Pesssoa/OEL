@@ -19,6 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 			.loginPage("/oel/login")
+			.defaultSuccessUrl("/oel", true)
 			.permitAll();
 	}
 }
