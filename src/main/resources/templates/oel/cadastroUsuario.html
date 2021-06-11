@@ -26,7 +26,7 @@
 				<div class="row justify-content-md-center">
 					<div class="col-md-6">
 
-						<form action="/oel/usuario" method="post">
+						<form action="/oel/usuario" method="post" th:object="${usuario}">
 						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 						
 
@@ -35,7 +35,7 @@
 								<div class="mb-1">
 									<input type="text" name="nome" class="form-control"
 										placeholder="Ex: Maria Laura da Silva">
-									<p th:erros="*{nome}"></p>
+									<p th:errors="*{nome}"></p>
 								</div>
 							</div>
 							<div class="row">
@@ -44,7 +44,7 @@
 								<div class="mb-1">
 									<input type="text" name="dataNasc" class="form-control"
 										placeholder="Ex: 24/07/2000">
-									<p th:erros="*{dataNasc}"></p>
+									<p th:errors="*{dataNasc}"></p>
 								</div>
 							</div>
 							<div class="row">
@@ -52,7 +52,7 @@
 								<div class="mb-1">
 									<input type="text" name="cidade" class="form-control"
 										placeholder="Ex: Lajes-RN">
-									<p th:erros="*{cidade}"></p>
+									<p th:errors="*{cidade}"></p>
 								</div>
 							</div>
 							<div class="row">
@@ -60,7 +60,7 @@
 								<div class="mb-1">
 									<input type="text" name="email" class="form-control"
 										placeholder="Ex: laura@gamail.com">
-									<p th:erros="*{email}"></p>
+									<p th:errors="*{email}"></p>
 								</div>
 							</div>
 
@@ -69,7 +69,7 @@
 								<div class="mb-1">
 									<input type="password" name="senha" class="form-control"
 										placeholder="Ex: laurinha@123">
-									<p th:erros="*{senha}"></p>
+									<p th:errors="*{senha}"></p>
 								</div>
 							</div>
 

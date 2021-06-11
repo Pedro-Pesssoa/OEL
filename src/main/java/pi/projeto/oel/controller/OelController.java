@@ -37,14 +37,14 @@ public class OelController {
 	private DenunciaRepository dr;
 
 	@GetMapping("/lixeira")
-	public String formLixeira() {
+	public String formLixeira(Lixeira lixeira) {
 
 		return "/oel/cadastroLixeira";
 
 	}
 
 	@GetMapping("/usuario")
-	public String formUsuario() {
+	public String formUsuario(Usuario usuario) {
 
 		return "/oel/cadastroUsuario";
 	}
@@ -56,7 +56,7 @@ public class OelController {
 		if (result.hasErrors()) {
 
 			System.out.println("erro");
-			return "cadastroUsuario";
+			return formUsuario(usuario);
 		}
 
 		System.out.println(usuario);
@@ -67,10 +67,11 @@ public class OelController {
 	}
 
 	@PostMapping("/lixeira")
-	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result) {
-
+	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result ) {
+		
 		if (result.hasErrors()) {
-			return "/oel/cadastroLixeira";
+			System.out.println("erro");
+			return formLixeira(lixeira);
 		}
 
 		System.out.println(lixeira);

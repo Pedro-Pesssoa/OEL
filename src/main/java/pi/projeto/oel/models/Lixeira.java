@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 
+
 @Entity
 public class Lixeira {
 	

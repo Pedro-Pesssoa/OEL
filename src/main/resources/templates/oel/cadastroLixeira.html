@@ -15,22 +15,24 @@
 
 	<div class="p-5"
 		style="background-image: url('/imagens/azul.png'); background-size: 100% 100%;">
-	
-		<div class="container text-light" >
+
+		<div class="container text-light">
 			<div class="row">
 				<div class="col-12 text-center my-2">
 					<h1 class="display-6">Cadastrar Lixeira</h1>
 				</div>
 			</div>
 
+
 			<div class="container">
 				<div class="row justify-content-md-center">
 					<div class="col-md-6">
-
-						<form action="/oel/lixeira" method="post">
-						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+						<form action="/oel/lixeira" method="post" th:object="${lixeira}">
+							<input type="hidden" th:name="${_csrf.parameterName}"
+								th:value="${_csrf.token}" />
 
 							<div class="row">
+
 								<label class="col-md-auto col-form-label">Tipo:</label>
 								<div class="mb-1">
 									<select class="form-control" name="tipo">
@@ -44,7 +46,7 @@
 										<option>Hospitalar</option>
 										<option>Outros</option>
 									</select>
-									<p th:erros="*{tipo}"></p>
+									<p th:errors="*{tipo}"></p>
 								</div>
 							</div>
 
@@ -64,7 +66,8 @@
 										<option>Antonio de Melo</option>
 										<option>Boa Esperança</option>
 									</select>
-									<p th:erros="*{bairro}"></p>
+									<p th:errors="*{bairro}"></p>
+									
 								</div>
 							</div>
 							<div class="row">
@@ -72,15 +75,18 @@
 								<div class="mb-1">
 									<input type="text" name="rua" class="form-control"
 										placeholder="Ex: Rua Firmamento">
-									<p th:erros="*{rua}"></p>
+									
+									<p th:errors="*{rua}"></p>
+
 								</div>
 							</div>
 							<div class="row">
+
 								<label class="col-md-auto col-form-label">Complemento:</label>
 								<div class="mb-1">
-									<input type="text" name="Complemento" class="form-control"
-										placeholder="Ex: Proximo a praça central">
-									<p th:erros="*{complemento}"></p>
+									<input type="text" name="complemento"
+										class="form-control" placeholder="Ex: Proximo a praça central">
+									<p th:errors="*{complemento}"></p>
 								</div>
 							</div>
 
