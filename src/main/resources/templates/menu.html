@@ -8,10 +8,11 @@
 <body>
 
 
-	<nav th:fragment="menu" class="navbar col-12 sticky-top bg-white text-dark">
+	<nav th:fragment="menu"
+		class="navbar col-12 sticky-top bg-white text-dark">
 		<div class="container">
-			<a class="navbar-brand" href="/">
-			<img th:src="@{/imagens/logo1.PNG}" width="230" height="65" alt=""> 
+			<a class="navbar-brand" href="/"> <img
+				th:src="@{/imagens/logo1.PNG}" width="230" height="65" alt="">
 			</a>
 			<div class="row justify-content-md-center">
 				<div class="row">
@@ -21,12 +22,20 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="d-grid gap-2 d-md-block">
-				<a href="/oel/usuario" class="btn btn-outline-success me-2" role="button"
-					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Cadastre-se</a>
+			
+				<a href="/oel/usuario" class="btn btn-outline-success me-2" role="button" 
+					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Cadastre-se</a> 
+					
 				<a href="/login" class="btn btn-success me-2" role="button"
-					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Entrar</a> 
+					sec:authorize="!isAuthenticated()" data-bs-toggle="button">Entrar</a>
+					
+				<!-- <form action="/logout" method="post">
+					<a href="#" th:href="@{/logout}"
+						class="btn btn-outline-success me-2" role="button"
+						data-bs-toggle="button">Sair</a> 
+				</form> -->
 			</div>
 		</div>
 	</nav>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 <link
@@ -100,7 +101,10 @@
 								<div class="card-footer text-center">
 									<a class="card-link text-success  text-decoration-none "
 										th:href="@{/oel/{id}(id=${l.id})}">Detalhar </a>
-										<button class="btn btn-outline-secondary my-2" type="reset"> <span class="glyphicon glyphicon-trash"> icon </span></button>
+										
+									<a sec:authorize="hasRole('ADM')" th:href="@{/oel/{id}/remover(id=${l.id})}">
+									<button class="btn btn-outline-secondary my-2" type="reset"> 
+									<span class="glyphicon glyphicon-trash"> delet </span></button></a>
 										
 								</div>
 								

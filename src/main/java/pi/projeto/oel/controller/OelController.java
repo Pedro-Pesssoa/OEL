@@ -172,4 +172,21 @@ public class OelController {
 
 	}
 
+	@GetMapping("/{id}/remover")
+	public String apagarLixeira(@PathVariable Long id) {
+		
+		Optional<Lixeira> opt = lr.findById(id);
+		
+		if (!opt.isEmpty()) {
+			Lixeira lixeira = opt.get();
+			
+			Optional<Denuncia> denuncias = dr.findByLixeira(lixeira);
+			
+			dr.deleteAll();
+			lr.delete(lixeira);
+		}
+		
+		return "redirect:/oel";
+	}
+
 }
