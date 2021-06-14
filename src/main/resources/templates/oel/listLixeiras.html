@@ -94,7 +94,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 									<h5 class="card-title text-center" th:text="${l.tipo}">Tipo</h5>
 								</div>
 								<ul class="list-group list-group-flush">
-									<!-- <li class="list-group-item" th:text="${l.id}" >id</li>  -->
+									<li  sec:authorize="hasRole('ADM')" class="list-group-item" th:text="${l.id}" >id</li>
 									<li class="list-group-item" th:text="${l.bairro}">Bairro</li>
 									<li class="list-group-item" th:text="${l.rua}">rua</li>
 									<li class="list-group-item" th:text="${l.complemento}">complemento</li>

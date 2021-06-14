@@ -171,6 +171,16 @@ public class OelController {
 		return md;
 
 	}
+	
+	@GetMapping("/listDenuncia")
+	public ModelAndView listaDenunica() {
+		
+		ModelAndView mv = new ModelAndView("oel/listDenuncia");
+		
+		List<Denuncia> listDenuncia = dr.findAll();
+		mv.addObject("listDenuncia", listDenuncia);
+		return mv;
+	}
 
 	@GetMapping("/{id}/remover")
 	public String apagarLixeira(@PathVariable Long id) {

@@ -11,4 +11,5 @@ import pi.projeto.oel.models.Lixeira;
 @Repository
 public interface DenunciaRepository extends JpaRepository<Denuncia, Long> {
 	Optional<Denuncia> findByLixeira(Lixeira lixeira);
+	
 }
