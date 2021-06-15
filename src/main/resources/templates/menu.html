@@ -36,11 +36,10 @@
 					
 					
 					
-				<!-- <form action="/logout" method="post">
-					<a href="#" th:href="@{/logout}"
-						class="btn btn-outline-success me-2" role="button"
-						data-bs-toggle="button">Sair</a>  
-				</form> -->
+				<form action="/logout" method="post">
+					<a href="#" th:href="@{/logout}" class="btn btn-outline-success me-2" role="button"
+						sec:authorize="isAuthenticated()" data-bs-toggle="button">Sair</a>  
+				</form> 
 			</div>
 		</div>
 	</nav>
