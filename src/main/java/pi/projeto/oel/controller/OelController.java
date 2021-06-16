@@ -1,5 +1,10 @@
 package pi.projeto.oel.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import pi.projeto.oel.models.Denuncia;
@@ -26,6 +33,8 @@ import pi.projeto.oel.repositories.UsuarioRepository;
 @Controller
 @RequestMapping("/oel")
 public class OelController {
+
+	private static String caminhoImg = "/Users/laura/Desktop/workspace/OEL/src/main/resources/static/imgLixo/";
 
 	@Autowired
 	private LixeiraRepository lr;
@@ -67,8 +76,9 @@ public class OelController {
 	}
 
 	@PostMapping("/lixeira")
-	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result ) {
-		
+	public String cadastrarLixeira(@Valid Lixeira lixeira, BindingResult result,
+			@RequestParam("file") MultipartFile arquivo) {
+
 		if (result.hasErrors()) {
 			System.out.println("erro");
 			return formLixeira(lixeira);
@@ -76,6 +86,21 @@ public class OelController {
 
 		System.out.println(lixeira);
 		lr.save(lixeira);
+
+		try {
+			if (!arquivo.isEmpty()) {
+				byte[] bytes = arquivo.getBytes();
+				Path caminho = Paths
+						.get(caminhoImg + String.valueOf(lixeira.getId()) + " - " + arquivo.getOriginalFilename());
+				Files.write(caminho, bytes);
+
+				lixeira.setNomeImg(String.valueOf(lixeira.getId()) + " - " + arquivo.getOriginalFilename());
+				lr.save(lixeira);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		return "/oel/cadastroLixeira";
 	}
@@ -171,6 +196,21 @@ public class OelController {
 
 		return md;
 
+	}
+
+	@GetMapping("/{idLixeira}/mostrarImg/{imagem}")
+	@ResponseBody
+	public byte[] retornarImg(@PathVariable("imagem") String imagem) {
+		File imagemArquivo = new File(caminhoImg + imagem);
+		if (imagem != null || imagem.trim().length() > 0) {
+			try {
+				return Files.readAllBytes(imagemArquivo.toPath());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 }

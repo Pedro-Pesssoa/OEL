@@ -32,7 +32,15 @@ public class Lixeira {
 	@NotBlank
 	private String complemento;
 	
+	private String nomeImg;
 	
+	public String getNomeImg() {
+		return nomeImg;
+	}
+
+	public void setNomeImg(String nomeImg) {
+		this.nomeImg = nomeImg;
+	}
 
 	public Long getId() {
 		return id;

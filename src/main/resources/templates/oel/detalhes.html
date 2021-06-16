@@ -13,52 +13,60 @@
 
 <body>
 	<div th:replace="~{menu :: menu}"></div>
-	
-	<div class="p-5" style="background-image: url('/imagens/amarelo.png'); background-size: 100% 100%;">
 
-	<div class="container" style="height: 475px;">
-		<div class="row">
-			<div class="col-12 text-center p-5  text-light">
-				<h1 class="display-6">Detalhes da lixeira</h1>
+	<div class="p-2"
+		style="background-image: url('/imagens/amarelo.png'); background-size: 100% 100%;">
+
+		<div class="container" style="height: 100%;">
+			<div class="row">
+				<div class="col-12 text-center p-2  text-light">
+					<h1 class="display-6">Detalhes da lixeira</h1>
+				</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-9">
+			<div class="container">
+				<div class="row justify-content-md-center">
+					<div class="col-md-9">
 
-					<div class="card bg-light mb-3" style="max-width: 100rem;">
-						<h5 class="card-header">Lixeira</h5>
-						<div class="card-body ">
+						<div class="card bg-light mb-3" style="max-width: 100rem;">
+							<h5 class="card-header">Lixeira - <span
+										th:text="${lixeira.id}">id</span></h5>
 
-							<p class="card-text">
-								<strong>Tipo de lixo:</strong> <span th:text="${lixeira.tipo}">Tipo
-									de lixo</span>
-							</p>
-							<p class="card-text">
-								<strong>Bairro:</strong> <span th:text="${lixeira.bairro}">bairro</span>
-							</p>
-							<p class="card-text">
-								<strong>Rua:</strong> <span th:text="${lixeira.rua}">rua</span>
-							</p>
-							<p class="card-text">
-								<strong>Complemento:</strong> <span
-									th:text="${lixeira.complemento}">Complemento</span>
-							</p>
+							<img class="card-img-top my-3"
+								th:src="@{/oel/{idLixeira}/mostrarImg/{imagem}(imagem=${lixeira.nomeImg})}"
+								style="width: 20rem; display: block; margin-left: auto; margin-right: auto;">
+
+							<div class="card-body ">
+
+								<p class="card-text">
+									<strong>Tipo de lixo:</strong> <span th:text="${lixeira.tipo}">Tipo
+										de lixo</span>
+								</p>
+								<p class="card-text">
+									<strong>Bairro:</strong> <span th:text="${lixeira.bairro}">bairro</span>
+								</p>
+								<p class="card-text">
+									<strong>Rua:</strong> <span th:text="${lixeira.rua}">rua</span>
+								</p>
+								<p class="card-text">
+									<strong>Complemento:</strong> <span
+										th:text="${lixeira.complemento}">Complemento</span>
+								</p>
+							</div>
+
 						</div>
-					</div>
-					<div class="row justify-content-end my-3">
-						<div class="col-auto">
-							<a th:object="${lixeira}"
-								th:href="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
-								class="btn btn-light" role="button"
-								data-bs-toggle="button">Solicitar exclusão</a>
+						<div class="row justify-content-end my-3">
+							<div class="col-auto">
+								<a th:object="${lixeira}"
+									th:href="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
+									class="btn btn-light" role="button" data-bs-toggle="button">Solicitar
+									exclusão</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<div th:replace="~{rodape :: rodape}"></div>
 </body>
