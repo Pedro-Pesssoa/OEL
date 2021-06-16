@@ -197,6 +197,33 @@ public class OelController {
 		return md;
 
 	}
+	
+	@GetMapping("/listDenuncia")
+	public ModelAndView listaDenunica() {
+		
+		ModelAndView mv = new ModelAndView("oel/listDenuncia");
+		
+		List<Denuncia> listDenuncia = dr.findAll();
+		mv.addObject("listDenuncia", listDenuncia);
+		return mv;
+	}
+
+	@GetMapping("/{id}/remover")
+	public String apagarLixeira(@PathVariable Long id) {
+		
+		Optional<Lixeira> opt = lr.findById(id);
+		
+		if (!opt.isEmpty()) {
+			Lixeira lixeira = opt.get();
+			
+			Optional<Denuncia> denuncias = dr.findByLixeira(lixeira);
+			
+			dr.deleteAll();
+			lr.delete(lixeira);
+		}
+		
+		return "redirect:/oel";
+	}
 
 	@GetMapping("/{idLixeira}/mostrarImg/{imagem}")
 	@ResponseBody

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -93,7 +94,7 @@
 									<h5 class="card-title text-center" th:text="${l.tipo}">Tipo</h5>
 								</div>
 								<ul class="list-group list-group-flush">
-									<!-- <li class="list-group-item" th:text="${l.id}" >id</li>  -->
+									<li  sec:authorize="hasRole('ADM')" class="list-group-item" th:text="${l.id}" >id</li>
 									<li class="list-group-item" th:text="${l.bairro}">Bairro</li>
 									<li class="list-group-item" th:text="${l.rua}">rua</li>
 									<li class="list-group-item" th:text="${l.complemento}">complemento</li>
@@ -102,12 +103,13 @@
 								<div class="card-footer text-center">
 									<a class="card-link text-success  text-decoration-none "
 										th:href="@{/oel/{id}(id=${l.id})}">Detalhar </a>
+
 								</div>
-								<div
-									class="card-footer text-center bg-danger">
-									<a class="card-link text-light" href=""> <span
-										class="material-icons">delete</span>
-									</a>
+								<div class="card-footer text-center bg-danger" sec:authorize="hasRole('ADM')" >
+									<a th:href="@{/oel/{id}/remover(id=${l.id})}">
+									<button class="card-link text-light"> 
+									<span class="material-icons">delete</span> </button> </a>
+									
 								</div>
 
 
