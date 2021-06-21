@@ -19,4 +19,6 @@ public interface LixeiraRepository extends JpaRepository<Lixeira, Long>{
 	
 	@Query("select r from Lixeira r where r.tipo like %?1%")
 	public List<Lixeira> findByTipo(String tipo);
+	
+	
 }
