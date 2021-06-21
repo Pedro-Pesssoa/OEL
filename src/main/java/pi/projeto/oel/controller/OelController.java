@@ -108,7 +108,7 @@ public class OelController {
 	@GetMapping("/pesquisa")
 	public ModelAndView filtroBairro(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
-		mv.addObject("lixeiras", lr.findByBairro(nomepesquisa));
+		mv.addObject("lixeiras", lr.findByBairroAndAllIgnoreCase(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
@@ -116,7 +116,7 @@ public class OelController {
 	@GetMapping("/pesquisa2")
 	public ModelAndView filtroRua(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
-		mv.addObject("lixeiras", lr.findByRua(nomepesquisa));
+		mv.addObject("lixeiras", lr.findByRuaAndAllIgnoreCase(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}
@@ -124,7 +124,7 @@ public class OelController {
 	@GetMapping("/pesquisa3")
 	public ModelAndView filtroTipo(@RequestParam("nomepesquisa") String nomepesquisa) {
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
-		mv.addObject("lixeiras", lr.findByTipo(nomepesquisa));
+		mv.addObject("lixeiras", lr.findByTipoAndAllIgnoreCase(nomepesquisa));
 		mv.addObject("lixeira", new Lixeira());
 		return mv;
 	}

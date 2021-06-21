@@ -40,7 +40,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 							</div>
 							<div class="col-auto">
 								<a href="/" class="btn btn-outline-secondary mb-2" role="button"
-									data-bs-toggle="button">Voltar</a>
+									data-bs-toggle="button">Limpar</a>
 							</div>
 						</div>
 					</div>
@@ -106,9 +106,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 								</div>
 								<div class="card-footer text-center bg-danger" sec:authorize="hasRole('ADM')" >
-									<a th:href="@{/oel/{id}/remover(id=${l.id})}">
-									<button class="card-link text-light"> 
-									<span class="material-icons">delete</span> </button> </a>
+									<a class="card-link text-light" th:href="@{/oel/{id}/remover(id=${l.id})}">
+									<span class="material-icons">delete</span></a>
 									
 								</div>
 

@@ -12,13 +12,13 @@ import pi.projeto.oel.models.Lixeira;
 public interface LixeiraRepository extends JpaRepository<Lixeira, Long>{
 
 	@Query("select b from Lixeira b where b.bairro like %?1%")
-	public List<Lixeira> findByBairro(String bairro);
+	public List<Lixeira> findByBairroAndAllIgnoreCase(String bairro);
 	
 	@Query("select r from Lixeira r where r.rua like %?1%")
-	public List<Lixeira> findByRua(String rua);
+	public List<Lixeira> findByRuaAndAllIgnoreCase(String rua);
 	
 	@Query("select r from Lixeira r where r.tipo like %?1%")
-	public List<Lixeira> findByTipo(String tipo);
+	public List<Lixeira> findByTipoAndAllIgnoreCase(String tipo);
 	
 	
 }
