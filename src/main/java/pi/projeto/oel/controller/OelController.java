@@ -34,7 +34,7 @@ import pi.projeto.oel.repositories.UsuarioRepository;
 @RequestMapping("/oel")
 public class OelController {
 
-	private static String caminhoImg = "/Users/laura/Desktop/workspace/OEL/src/main/resources/static/imgLixo/";
+	private static String caminhoImg = "src/main/resources/static/imgLixo/";
 
 	@Autowired
 	private LixeiraRepository lr;
