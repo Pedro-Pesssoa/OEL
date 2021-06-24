@@ -25,10 +25,6 @@ public class Lixeira {
 	@NotBlank
 	private String rua;
 
-	private String latitude;
-
-	private String logitude;
-	
 	@NotBlank
 	private String complemento;
 	
@@ -56,22 +52,6 @@ public class Lixeira {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
-	public String getLogitude() {
-		return logitude;
-	}
-
-	public void setLogitude(String logitude) {
-		this.logitude = logitude;
 	}
 
 	public String getComplemento() {

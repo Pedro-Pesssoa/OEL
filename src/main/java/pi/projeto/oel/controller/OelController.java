@@ -202,7 +202,7 @@ public class OelController {
 	public ModelAndView listaDenunica() {
 		
 		ModelAndView mv = new ModelAndView("oel/listDenuncia");
-		
+				
 		List<Denuncia> listDenuncia = dr.findAll();
 		mv.addObject("listDenuncia", listDenuncia);
 		return mv;

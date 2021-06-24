@@ -62,6 +62,11 @@
 									class="btn btn-light" role="button" data-bs-toggle="button">Solicitar
 									exclusão</a>
 							</div>
+							<div class="col-auto">
+								<a th:object="${lixeira}"
+									th:href="@{/oel/{id}/remover(id=${lixeira.id})}" sec:authorize="hasRole('ADM')"
+									class="btn btn-light" role="button" data-bs-toggle="button">apagar</a>
+							</div>
 						</div>
 					</div>
 				</div>
