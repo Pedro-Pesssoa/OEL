@@ -30,18 +30,16 @@
 						<th scope="col">Lixeira</th>
 						<th scope="col">Motivo</th>
 						<th scope="col">Argumento</th>
-						<th scope="col"></th>
+						<th scope="col">Complemento</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="d : ${listDenuncia}" >
-						<th scope="row" th:text="${d.lixeira.id}" >lixeira</th>
-						<td scope="row" th:text="${d.motivo}">motivo</td>
-						<td th:text="${d.argumento}">argumento</td>
-						<td > <span class="material-icons-outlined">apagar</span></td>
+						<th scope="row" ><a th:href="@{/oel/{id}(id=${d.id})}"><span th:text="${d.id}">id</span></a></th>
+						<td th:text="${d.bairro}">bairro</td>
+						<td th:text="${d.rua}">rua</td>
+						<td th:text="${d.complemento}">complemento</td>
 					</tr>
-
-
 				</tbody>
 			</table>
 

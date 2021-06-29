@@ -68,6 +68,24 @@
 									class="btn btn-light" role="button" data-bs-toggle="button">apagar</a>
 							</div>
 						</div>
+						<div>
+							<table class="table table-hover table-dark">
+				<thead>
+					<tr>
+						<th scope="col">id</th>
+						<th scope="col">Motivo</th>
+						<th scope="col">Argumento</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="dl : ${listDenunciaLix}" >
+						<th th:text="${dl.id}" >id</th>
+						<th th:text="${dl.motivo}" >motivo</th>
+						<td th:text="${dl.argumento}">argumento</td>
+					</tr>
+				</tbody>
+			</table>
+						</div>
 					</div>
 				</div>
 			</div>

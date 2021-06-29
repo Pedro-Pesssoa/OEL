@@ -131,9 +131,31 @@ public class OelController {
 
 	@GetMapping
 	public ModelAndView listar() {
-		List<Lixeira> lixeiras = lr.findAll();
 		ModelAndView mv = new ModelAndView("/oel/listLixeiras");
+		List<Lixeira> lixeiras = lr.findAll();
+		
 		mv.addObject("lixeiras", lixeiras);
+		return mv;
+	}
+	
+	@GetMapping("/listDenuncia")
+	public ModelAndView listaDenunica() {		
+		ModelAndView mv = new ModelAndView("oel/listDenuncia");
+		
+		List<Lixeira> listDenuncia = lr.findAllWhereDenunciaExists();
+		mv.addObject("listDenuncia", listDenuncia);
+		return mv;
+	}
+	
+	@GetMapping("{id}/listDenunciaLix")
+	public ModelAndView listaDenunicaLix(Long id) {		
+		ModelAndView mv = new ModelAndView("oel/detalhes");
+		
+		Optional<Lixeira> opt = lr.findById(id);
+		Lixeira lixeira = opt.get();
+		
+		List<Denuncia> listDenunciaLix = dr.findByLixeira(lixeira);
+		mv.addObject("listDenunciaLix", listDenunciaLix);
 		return mv;
 	}
 
@@ -198,15 +220,6 @@ public class OelController {
 
 	}
 	
-	@GetMapping("/listDenuncia")
-	public ModelAndView listaDenunica() {
-		
-		ModelAndView mv = new ModelAndView("oel/listDenuncia");
-				
-		List<Denuncia> listDenuncia = dr.findAll();
-		mv.addObject("listDenuncia", listDenuncia);
-		return mv;
-	}
 
 	@GetMapping("/{id}/remover")
 	public String apagarLixeira(@PathVariable Long id) {
@@ -216,15 +229,15 @@ public class OelController {
 		if (!opt.isEmpty()) {
 			Lixeira lixeira = opt.get();
 			
-			Optional<Denuncia> denuncias = dr.findByLixeira(lixeira);
+			List<Denuncia> denuncias = dr.findByLixeira(lixeira);
 			
-			dr.deleteAll();
+			dr.deleteAll(denuncias);
 			lr.delete(lixeira);
 		}
 		
 		return "redirect:/oel";
 	}
-
+	
 	@GetMapping("/{idLixeira}/mostrarImg/{imagem}")
 	@ResponseBody
 	public byte[] retornarImg(@PathVariable("imagem") String imagem) {
