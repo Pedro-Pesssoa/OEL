@@ -147,8 +147,8 @@ public class OelController {
 		return mv;
 	}
 	
-	@GetMapping("{id}/listDenunciaLix")
-	public ModelAndView listaDenunicaLix(Long id) {		
+	@GetMapping("/{id}/listDenunciaLix")
+	public ModelAndView listDenunciaLix(Long id) {		
 		ModelAndView mv = new ModelAndView("oel/detalhes");
 		
 		Optional<Lixeira> opt = lr.findById(id);
@@ -156,6 +156,8 @@ public class OelController {
 		
 		List<Denuncia> listDenunciaLix = dr.findByLixeira(lixeira);
 		mv.addObject("listDenunciaLix", listDenunciaLix);
+
+		System.out.println("Denuncias "+listDenunciaLix);
 		return mv;
 	}
 
