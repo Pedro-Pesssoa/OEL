@@ -14,18 +14,18 @@
 <body>
 	<div th:replace="~{menu :: menu}"></div>
 	
-	<div class="p-5" style="background-image: url('/imagens/vermelho.png'); background-size: 100% 100%;">
+	<div class="p-5" style="background-image: url('/imagens/img4.png'); background-size: 100% 100%;">
 	
-	<div class="container text-light" style="height: 475px;">
+	<div class="container text-light" style="height: 560px;">
 		<div class="row">
-			<div class="col-12 text-center my-2 p-5">
+			<div class="col-12 text-center p-5">
 				<h4 class="display-6">Denunciar Lixeira</h4>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row justify-content-md-center">
-				<div class="col-md-7">
+				<div class="col-md-6">
 
 					<form th:action="@{/oel/{idLixeira}/fazerDenuncia(idLixeira=${lixeira.id})}"
 						method="post" th:object="${denuncia}">

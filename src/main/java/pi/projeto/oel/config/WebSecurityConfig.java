@@ -2,6 +2,7 @@ package pi.projeto.oel.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -15,7 +16,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/oel").permitAll()
 		.antMatchers("/oel/usuario").permitAll()
 		.antMatchers("/oel/{id}").permitAll()
-		.antMatchers("/imagens/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -27,7 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/oel/login")
 			.permitAll();
-		
-		
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/imagens/**", "/oel/{idLixeira}/mostrarImg/{imagem}");
 	}
 }

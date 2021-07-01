@@ -34,7 +34,7 @@ import pi.projeto.oel.repositories.UsuarioRepository;
 @RequestMapping("/oel")
 public class OelController {
 
-	private static String caminhoImg = "/Users/laura/Desktop/workspace/OEL/src/main/resources/static/imgLixo/";
+	private static String caminhoImg = "src/main/resources/static/imgLixo/";
 
 	@Autowired
 	private LixeiraRepository lr;
@@ -49,13 +49,17 @@ public class OelController {
 	public String formLixeira(Lixeira lixeira) {
 
 		return "/oel/cadastroLixeira";
-
 	}
 
 	@GetMapping("/usuario")
 	public String formUsuario(Usuario usuario) {
 
 		return "/oel/cadastroUsuario";
+	}
+
+	@GetMapping("/conscientizacao")
+	public String concientizacao() {
+		return "/oel/conscientizacao";
 	}
 
 	@PostMapping("/usuario")
@@ -219,22 +223,21 @@ public class OelController {
 		return md;
 
 	}
-	
 
 	@GetMapping("/{id}/remover")
 	public String apagarLixeira(@PathVariable Long id) {
-		
+
 		Optional<Lixeira> opt = lr.findById(id);
-		
+
 		if (!opt.isEmpty()) {
 			Lixeira lixeira = opt.get();
 			
 			List<Denuncia> denuncias = dr.findByLixeira(lixeira);
-			
+
 			dr.deleteAll(denuncias);
 			lr.delete(lixeira);
 		}
-		
+
 		return "redirect:/oel";
 	}
 	
