@@ -35,7 +35,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="d : ${listDenuncia}" >
-						<th scope="row" ><a th:href="@{/oel/{id}(id=${d.id})}"><span th:text="${d.id}">id</span></a></th>
+						<th scope="row" ><a th:href="@{/oel/{id}(id=${d.id})}" class="text-dark"><span th:text="${d.id}">id</span></a></th>
 						<td th:text="${d.bairro}">bairro</td>
 						<td th:text="${d.rua}">rua</td>
 						<td th:text="${d.complemento}">complemento</td>
