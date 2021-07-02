@@ -150,35 +150,28 @@ public class OelController {
 		mv.addObject("listDenuncia", listDenuncia);
 		return mv;
 	}
-	
-	@GetMapping("/{id}/listDenunciaLix")
-	public ModelAndView listDenunciaLix(Long id) {		
-		ModelAndView mv = new ModelAndView("oel/detalhes");
-		
-		Optional<Lixeira> opt = lr.findById(id);
-		Lixeira lixeira = opt.get();
-		
-		List<Denuncia> listDenunciaLix = dr.findByLixeira(lixeira);
-		mv.addObject("listDenunciaLix", listDenunciaLix);
 
-		System.out.println("Denuncias "+listDenunciaLix);
-		return mv;
-	}
-
-	@GetMapping("/{id}")
+	@GetMapping("/detalhes/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
+		
 		ModelAndView md = new ModelAndView();
+		
 		Optional<Lixeira> opt = lr.findById(id);
 
 		if (opt.isEmpty()) {
 			md.setViewName("redirect:/oel");
 			return md;
 		}
-
+		
 		md.setViewName("/oel/detalhes");
 		Lixeira lixeira = opt.get();
+		
+		List<Denuncia> listDenunciaLix = dr.findByLixeira(lixeira);
+		md.addObject("denuncias", listDenunciaLix);
+		
+		System.out.println(listDenunciaLix);
+		
 		md.addObject("lixeira", lixeira);
-
 		return md;
 	}
 

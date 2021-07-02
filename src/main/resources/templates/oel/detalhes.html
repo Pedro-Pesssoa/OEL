@@ -69,16 +69,16 @@
 							</div>
 						</div>
 						<div>
-							<table class="table table-hover table-light">
+							<table class="table table-hover table-light" sec:authorize="hasRole('ADM')">
 				<thead>
-					<tr>
+					<tr >
 						<th scope="col">id</th>
 						<th scope="col">Motivo</th>
 						<th scope="col">Argumento</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="dl : ${listaDenunciaLix}" >
+					<tr th:each="dl : ${denuncias}" >
 						<th th:text="${dl.id}" >id</th>
 						<th th:text="${dl.motivo}" >motivo</th>
 						<td th:text="${dl.argumento}">argumento</td>
